@@ -1,7 +1,8 @@
-package com.example.demo.utils;
+package com.example.demo.config;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
@@ -47,7 +48,7 @@ public class RedisConfig {
 
     public interface CacheManagerName{
          String REDIS_MANAGER = "redisCacheManager";
-         String REDIS_TTL_MANAGER = "redisTTLCacheManager";//超时时间的缓存管理器
+         String REDIS_TTL_MANAGER = "redisTTLCacheManager";//超时功能的缓存管理器
     }
 
     @Bean(CacheManagerName.REDIS_MANAGER)

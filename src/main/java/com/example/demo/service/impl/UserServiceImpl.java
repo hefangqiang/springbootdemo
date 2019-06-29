@@ -3,11 +3,12 @@ package com.example.demo.service.impl;
 import com.example.demo.dao.UserMapper;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
-import com.example.demo.utils.RedisConfig;
+import com.example.demo.config.RedisConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @description： TODO
@@ -16,8 +17,6 @@ import javax.annotation.Resource;
  **/
 @Service
 public class UserServiceImpl implements UserService {
-
-
 
     @Resource
     private UserMapper userMapper;
@@ -30,6 +29,26 @@ public class UserServiceImpl implements UserService {
         } else {
             return true;
         }
+    }
+
+    @Override
+    public List<User> findAllUser() {
+        return userMapper.selectAllUser();
+    }
+
+    @Override
+    public void createUser(User user) {
+        userMapper.insert(user);
+    }
+
+    @Override
+    public void modifyUser(User user) {
+        userMapper.updateByPrimaryKey(user);
+    }
+
+    @Override
+    public void deleteUser(int id) {
+        userMapper.deleteByPrimaryKey(id);
     }
 
     @Override
